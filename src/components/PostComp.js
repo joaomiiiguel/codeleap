@@ -3,7 +3,7 @@ import { Box, IconButton } from '@mui/material';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-export default function PostComp({ key, title, author, timestamp, content, userEdit, modalDelete, modalEdit }) {
+export default function PostComp({ title, author, timestamp, content, userEdit, modalDelete, modalEdit }) {
     const [timePost, setTimePost] = useState('')
 
     async function convertTime(time) {
@@ -16,21 +16,21 @@ export default function PostComp({ key, title, author, timestamp, content, userE
         convertTime(timestamp)
     }, [])
     return (
-        <Box key={key} className='flex flex-col w-full border-solid border-2 border-blue rounded-lg overflow-hidden'>
+        <Box className='flex flex-col w-full border-solid border-2 bg-white border-blue rounded-lg overflow-hidden snap-start'>
             <Box className='flex flex-row items-center justify-between bg-blue text-white px-4 md:px-10 py-4'>
-                <p className='font-bold text-xl'>{title}</p>
+                <p className='font-bold text-xl truncate'>{title}</p>
                 {userEdit === author &&
                     <div>
                         <IconButton className='text-white' aria-label="Logout User" onClick={modalDelete}>
-                            <DeleteForeverIcon className='text-[18px]' />
+                            <DeleteForeverIcon className='text-[20px]' />
                         </IconButton>
                         <IconButton className='text-white ' aria-label="Logout User" onClick={modalEdit}>
-                            <BorderColorIcon className='text-[18px]' />
+                            <BorderColorIcon className='text-[20px]' />
                         </IconButton>
                     </div>
                 }
             </Box>
-            <Box className='px-4 py-6 md:p-10'>
+            <Box className='px-4 pt-2 md:p-10'>
                 <Box className='flex flex-row justify-between items-center'>
                     <p className='font-bold opacity-40 text-sm'>@{author}</p>
                     {timePost <= 0 ?
@@ -51,7 +51,7 @@ export default function PostComp({ key, title, author, timestamp, content, userE
                         </>
                     }
                 </Box>
-                <Box className='mt-4 text-justify'>
+                <Box className='py-8 text-justify line-clamp-4 break-all'>
                     {content}
                 </Box>
             </Box>

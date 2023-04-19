@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react'
 import { Box, Button, CircularProgress } from '@mui/material';
-import { getAllPosts } from '../redux/postsSlice'
+import { setShowModalAlert, setAlertContent } from '@/redux/UserSlice';
+import { getAllPosts } from '../redux/PostsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { api } from '@/actions/api';
 
@@ -14,7 +15,7 @@ export default function newPostComp() {
 
   async function createNewPost() {
     setLoadingCreate(true)
-    
+
     const newPost = {
       "username": userName,
       "title": titlePost,
@@ -22,23 +23,27 @@ export default function newPostComp() {
     }
     try {
       const response = await api.post('/', newPost)
-      console.log('added', response);
+      dispatch(setShowModalAlert(true))
+      dispatch(setAlertContent({
+        title: `New post created: ${newPost.title}`,
+        severity: 'success'
+      }))
       setTimeout(async () => {
-        const response = await api.get('/')
-        dispatch(getAllPosts(response.data.results))
         setTitlePost('')
         setContentPost('')
         setLoadingCreate(false)
+        const newresponse = await api.get('/')
+        dispatch(getAllPosts(newresponse.data))
+        dispatch(setShowModalAlert(false))
+        return
       }, 1000);
-
     } catch (error) {
-
       console.log(error.message);
     }
   }
 
   return (
-    <Box className='flex flex-col w-full border-solid border-2 border-blue rounded-lg p-6 space-y-4'>
+    <Box className='flex flex-col w-full border-solid border-2 bg-white border-blue rounded-lg p-6 space-y-4'>
       <p className='font-semibold text-2xl'>What&apos;s on your mind?</p>
 
       <div>

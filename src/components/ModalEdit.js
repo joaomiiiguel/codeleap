@@ -1,7 +1,39 @@
+import { api } from '@/actions/api';
 import { Box, Button } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { getAllPosts } from '../redux/PostsSlice'
+import { setAlertContent, setShowModalAlert, setShowModalEdit } from '@/redux/UserSlice';
 
-export default function ModalEdit({closeModal, dataPostSelected, updatePost}) {
+export default function ModalEdit({ dataPostSelected }) {
+    const [newValuePost, setNewValuePost] = useState({
+        title: dataPostSelected?.title,
+        content: dataPostSelected?.content
+    })
+    const dispatch = useDispatch()
+
+
+    async function updatePost(dataNewPost, idPost) {
+        try {
+            const response = await api.patch(`${idPost}/`, {
+                "title": dataNewPost.title,
+                "content": dataNewPost.content
+            });
+            const newData = await api.get('/')
+            dispatch(getAllPosts(newData.data))
+            dispatch(setShowModalEdit(false))
+            dispatch(setShowModalAlert(true))
+            dispatch(setAlertContent({
+                title: 'Post modificado com sucesso',
+                severity: 'success'
+            }))
+            return
+        } catch (error) {
+            console.log(error.message);
+        }
+
+    }
+
     return (
         <Box className='flex flex-col bg-white w-5/6 py-8 px-10 rounded-2xl space-y-8 items-center mx-[5%] md:w-5/6 lg:w-3/6 shadow-lg justify-center' >
             <p className='font-semibold text-2xl'>Edit item</p>
@@ -11,6 +43,8 @@ export default function ModalEdit({closeModal, dataPostSelected, updatePost}) {
                     id="title-post"
                     placeholder='Hello world'
                     className='border-blue bg-transparent border-2 w-full rounded p-2'
+                    value={newValuePost.title}
+                    onChange={(e) => setNewValuePost({ title: e.target.value })}
                 />
             </div>
             <div className='w-full'>
@@ -20,11 +54,13 @@ export default function ModalEdit({closeModal, dataPostSelected, updatePost}) {
                     placeholder='Content here'
                     rows="4"
                     className='border-blue bg-transparent border-2 w-full rounded p-2'
+                    value={newValuePost.content}
+                    onChange={(e) => setNewValuePost({ content: e.target.value })}
                 />
             </div>
             <div className='flex flex-row w-full md:w-1/2 space-x-6'>
-                <Button variant='outlined' className='font-semibold py-2 px-6 text-black rounded-md border' fullWidth onClick={closeModal}>Cancel</Button>
-                <Button variant='contained' className='font-semibold py-2 px-6 bg-green rounded-md border' fullWidth onClick={updatePost}>Save</Button>
+                <Button variant='outlined' className='font-semibold py-2 px-6 text-black rounded-md border' fullWidth onClick={() => dispatch(setShowModalEdit(false))}>Cancel</Button>
+                <Button variant='contained' className='font-semibold py-2 px-6 bg-green rounded-md border' fullWidth onClick={() => updatePost(newValuePost, dataPostSelected?.id)}>Save</Button>
             </div>
         </Box>
     )
