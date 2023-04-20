@@ -3,10 +3,8 @@
     <img src="https://codeleap.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F42e9230a-a959-4654-82e7-f4228deceebe%2Fnotion_bg.png?table=block&id=3c1f41f0-6f93-437a-889b-2a4b18ca34e0&spaceId=93e5aa2c-4ad5-4281-9019-e2fc972f4948&width=2000&userId=&cache=v2" alt="Logo">
   </div>
 
-  # CodeLeap Network Test
-
   <p align="center">
-    <a href="https://code-leap-gabrielguedess.vercel.app" target="_blank">Link Demo</a>
+    <a href="codeleap-miguel.vercel.app" target="_blank">LINK DEMO</a>
   </p>
 </div>
 
