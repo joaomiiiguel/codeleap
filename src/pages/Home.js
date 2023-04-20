@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { api } from '../actions/api';
 import { useSelector, useDispatch } from 'react-redux'
 
-import { logoutUser, setShowModalAlert, setShowModalDelete, setShowModalEdit } from '../redux/UserSlice'
-import { getAllPosts, setLimitPost, countTotalPost } from '../redux/PostsSlice'
+import { logoutUser, setShowModalAlert, setShowModalDelete, setShowModalEdit } from '../redux/UserSlice.js'
+import { getAllPosts, setLimitPost, countTotalPost } from '../redux/PostsSlice.js'
 import { IconButton, Modal, CircularProgress, Alert, Grow, LinearProgress, Button } from '@mui/material';
 import NewPostComp from '../components/newPostComp';
 import PostComp from '../components/PostComp';

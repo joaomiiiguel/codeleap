@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { api } from '../actions/api';
 import { Box, Button } from '@mui/material'
 import { useDispatch } from 'react-redux';
-// import { getAllPosts, setLimitPost, countTotalPost } from '../redux/PostsSlice'
-import { setAlertContent, setShowModalAlert, setShowModalEdit } from '../redux/UserSlice';
+import { getAllPosts } from '../redux/PostsSlice'
+// import { setAlertContent, setShowModalAlert, setShowModalEdit } from '../redux/UserSlice';
 
 export default function ModalEdit({ dataPostSelected }) {
     const [newValuePost, setNewValuePost] = useState({
@@ -19,14 +19,14 @@ export default function ModalEdit({ dataPostSelected }) {
                 "title": dataNewPost.title,
                 "content": dataNewPost.content
             });
-            // const newData = await api.get('/')
-            // dispatch(getAllPosts(newData.data))
-            dispatch(setShowModalEdit(false))
-            dispatch(setShowModalAlert(true))
-            dispatch(setAlertContent({
-                title: 'Post modified',
-                severity: 'success'
-            }))
+            const newData = await api.get('/')
+            dispatch(getAllPosts(newData.data))
+            // dispatch(setShowModalEdit(false))
+            // dispatch(setShowModalAlert(true))
+            // dispatch(setAlertContent({
+            //     title: 'Post modified',
+            //     severity: 'success'
+            // }))
         } catch (error) {
             console.log(error.message);
         }
