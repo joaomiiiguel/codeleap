@@ -1,8 +1,8 @@
 import React from 'react'
 import { Box, Button } from '@mui/material'
 import { useDispatch } from 'react-redux';
-// import getAllPosts from '../redux/PostsSlice'
-// import { setShowModalDelete, setShowModalAlert, setAlertContent } from '../redux/UserSlice';
+import { getAllPosts } from '../redux/postsSlice'
+import { setShowModalDelete, setShowModalAlert, setAlertContent } from '../redux/userSlice';
 import { api } from '../actions/api';
 
 
@@ -10,17 +10,19 @@ export default function ModalDelete({ idSelected }) {
     const dispatch = useDispatch()
 
     async function handleDeletePost(idPost) {
-        api.delete(`/${idPost}/`)
-        .then(async () => {
+        try {
+            const response = await api.delete(`/${idPost}/`)
             const newData = await api.get('/')
-            // dispatch(getAllPosts(newData.data))
-            // dispatch(setShowModalDelete(false))
-            // dispatch(setShowModalAlert(true))
-            // dispatch(setAlertContent({
-            //     title: 'Post Deleted',
-            //     severity: 'success'
-            // }))
-        })
+            dispatch(getAllPosts(newData.data))
+            dispatch(setShowModalDelete(false))
+            dispatch(setShowModalAlert(true))
+            dispatch(setAlertContent({
+                title: 'Post Deleted',
+                severity: 'success'
+            }))
+        } catch (error) {
+            console.log(error.message);
+        }
     }
     
     return (

@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { Box, Button, CircularProgress } from '@mui/material';
 import { setShowModalAlert, setAlertContent } from '../redux/userSlice';
-// import { getAllPosts } from '../redux/PostsSlice'
+import { getAllPosts } from '../redux/postsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { api } from '../actions/api';
 
@@ -32,8 +32,8 @@ export default function newPostComp() {
         setTitlePost('')
         setContentPost('')
         setLoadingCreate(false)
-        // const newresponse = await api.get('/')
-        // dispatch(getAllPosts(newresponse.data))
+        const newresponse = await api.get('/')
+        dispatch(getAllPosts(newresponse.data))
         dispatch(setShowModalAlert(false))
         return
       }, 1000);
