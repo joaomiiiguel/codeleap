@@ -4,7 +4,7 @@
   </div>
 
   <p align="center">
-    <a href="codeleap-miguel.vercel.app" target="_blank">LINK DEMO</a>
+    <a href="https://codeleap-azure.vercel.app/" target="_blank">LINK DEMO</a>
   </p>
 </div>
 
