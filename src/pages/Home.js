@@ -13,6 +13,15 @@ import ModalDelete from '@/components/ModalDelete';
 import LogoutIcon from '@mui/icons-material/Logout';
 import CloseIcon from '@mui/icons-material/Close';
 
+
+export async function getStaticProps() {
+    const message = await redis.get('message')
+    return {
+      message,
+    }
+  }
+
+
 export default function Home() {
     const dataPost = useSelector((state) => state.post.data)
     const userName = useSelector((state) => state.user.name)
@@ -30,8 +39,6 @@ export default function Home() {
     const [idPostSelected, setIDPostSelected] = useState()
 
     async function fetchData() {
-        console.log(dataPost);
-        console.log(count);
         setLoadingListPosts(true)
         const response = await api.get(`/?limit=${limitPost}`)
         dispatch(getAllPosts(response.data))
@@ -109,7 +116,7 @@ export default function Home() {
                         :
                         <div className='flex flex-col w-full justify-center text-center opacity-60'>
                             {dataPost.count > 10 &&
-                                <Button variant="text" color="inherit" size='small' fullWidth
+                                <Button variant="text" color="inherit" size='small' fullWidth title="Hello again."
                                     onClick={() => getPostWithPagination()}>
                                     See more...
                                 </Button>

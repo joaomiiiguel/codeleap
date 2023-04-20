@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Inter } from 'next/font/google'
 import { logginUser } from '../redux/UserSlice'
 
-import LoginUserComp from '@/components/LoginUserComp';
+import LoginUserComp from '../components/LoginUserComp';
 import HomeComp from './Home';
 
 const inter = Inter({ subsets: ['latin'] })

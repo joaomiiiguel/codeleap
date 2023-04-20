@@ -27,7 +27,6 @@ export default function ModalEdit({ dataPostSelected }) {
                 title: 'Post modified',
                 severity: 'success'
             }))
-            return
         } catch (error) {
             console.log(error.message);
         }
