@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react'
 import { Box, Button, CircularProgress } from '@mui/material';
-import { setShowModalAlert, setAlertContent } from '@/redux/UserSlice';
+import { setShowModalAlert, setAlertContent } from '../redux/UserSlice';
 import { getAllPosts } from '../redux/PostsSlice'
 import { useSelector, useDispatch } from 'react-redux'
-import { api } from '@/actions/api';
+import { api } from '../actions/api';
 
 export default function newPostComp() {
   const [titlePost, setTitlePost] = useState('');

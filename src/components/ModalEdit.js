@@ -1,9 +1,9 @@
-import { api } from '@/actions/api';
-import { Box, Button } from '@mui/material'
 import React, { useState } from 'react'
+import { api } from '../actions/api';
+import { Box, Button } from '@mui/material'
 import { useDispatch } from 'react-redux';
 import { getAllPosts } from '../redux/PostsSlice'
-import { setAlertContent, setShowModalAlert, setShowModalEdit } from '@/redux/UserSlice';
+import { setAlertContent, setShowModalAlert, setShowModalEdit } from '../redux/UserSlice';
 
 export default function ModalEdit({ dataPostSelected }) {
     const [newValuePost, setNewValuePost] = useState({
