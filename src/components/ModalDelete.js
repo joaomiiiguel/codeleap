@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Button } from '@mui/material'
 import { useDispatch } from 'react-redux';
-import { getAllPosts } from '../redux/PostsSlice'
+import getAllPosts from '../redux/PostsSlice'
 import { setShowModalDelete, setShowModalAlert, setAlertContent } from '../redux/UserSlice';
 import { api } from '../actions/api';
 
@@ -10,8 +10,8 @@ export default function ModalDelete({ idSelected }) {
     const dispatch = useDispatch()
 
     async function handleDeletePost(idPost) {
-        try {
-            const response = await api.delete(`/${idPost}/`);
+        api.delete(`/${idPost}/`)
+        .then(async () => {
             const newData = await api.get('/')
             dispatch(getAllPosts(newData.data))
             dispatch(setShowModalDelete(false))
@@ -20,14 +20,11 @@ export default function ModalDelete({ idSelected }) {
                 title: 'Post Deleted',
                 severity: 'success'
             }))
-            return
-        } catch (error) {
-            console.log(error.message);
-        }
+        })
     }
     
     return (
-        <Box className='flex flex-col bg-white py-8 px-10 rounded-2xl space-y-8 items-center mx-[5%] md:w-fit lg:w-[25%] shadow-lg justify-center' >
+        <Box className='flex flex-col bg-white py-8 px-10 rounded-2xl space-y-8 items-center mx-[5%] md:w-fit lg:w-3/6 shadow-lg justify-center' >
             <p className='text-xl font-semibold py-4'>
                 Are you sure you want to delete this item?
             </p>

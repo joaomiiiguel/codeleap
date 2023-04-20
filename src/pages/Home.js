@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { logoutUser, setShowModalAlert, setShowModalDelete, setShowModalEdit } from '../redux/UserSlice'
 import { getAllPosts, setLimitPost, countTotalPost } from '../redux/PostsSlice'
-import { Box, IconButton, Modal, CircularProgress, Alert, Grow, LinearProgress, Button } from '@mui/material';
+import { IconButton, Modal, CircularProgress, Alert, Grow, LinearProgress, Button } from '@mui/material';
 import NewPostComp from '@/components/newPostComp';
 import PostComp from '@/components/PostComp';
 import ModalEdit from '@/components/ModalEdit';
@@ -12,15 +12,6 @@ import ModalDelete from '@/components/ModalDelete';
 
 import LogoutIcon from '@mui/icons-material/Logout';
 import CloseIcon from '@mui/icons-material/Close';
-
-
-export async function getStaticProps() {
-    const message = await redis.get('message')
-    return {
-      message,
-    }
-  }
-
 
 export default function Home() {
     const dataPost = useSelector((state) => state.post.data)
@@ -86,9 +77,9 @@ export default function Home() {
             <div className='flex flex-col w-5/6 md:w-4/6 lg:w-2/6 max-w-[1000px] space-y-4 mb-10 scroll-pl-6 snap-y'>
                 {
                     loadingListPosts ?
-                        <Box className='flex w-full justify-center mt-4'>
+                        <div className='flex w-full justify-center mt-4'>
                             <CircularProgress />
-                        </Box>
+                        </div>
                         :
                         <>
                             {
@@ -133,7 +124,9 @@ export default function Home() {
                 aria-describedby="modal-delet-post"
                 className='flex justify-center items-center'
             >
-                <ModalDelete idSelected={idPostSelected?.id} />
+                <>
+                    <ModalDelete idSelected={idPostSelected?.id} />
+                </>
             </Modal>
 
 
