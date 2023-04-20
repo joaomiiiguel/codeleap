@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Button } from '@mui/material'
 import { useDispatch } from 'react-redux';
-import getAllPosts from '../redux/PostsSlice'
+// import getAllPosts from '../redux/PostsSlice'
 import { setShowModalDelete, setShowModalAlert, setAlertContent } from '../redux/UserSlice';
 import { api } from '../actions/api';
 

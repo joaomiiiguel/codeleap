@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { api } from '../actions/api';
 import { Box, Button } from '@mui/material'
 import { useDispatch } from 'react-redux';
-import { getAllPosts, setLimitPost, countTotalPost } from '../redux/PostsSlice'
+// import { getAllPosts, setLimitPost, countTotalPost } from '../redux/PostsSlice'
 import { setAlertContent, setShowModalAlert, setShowModalEdit } from '../redux/UserSlice';
 
 export default function ModalEdit({ dataPostSelected }) {
