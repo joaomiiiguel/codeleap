@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { api } from '../actions/api';
 import { Box, Button } from '@mui/material'
 import { useDispatch } from 'react-redux';
-import { getAllPosts } from '../redux/PostsSlice'
+// import { getAllPosts } from '../redux/PostsSlice'
 // import { setAlertContent, setShowModalAlert, setShowModalEdit } from '../redux/UserSlice';
 
 export default function ModalEdit({ dataPostSelected }) {
@@ -20,7 +20,7 @@ export default function ModalEdit({ dataPostSelected }) {
                 "content": dataNewPost.content
             });
             const newData = await api.get('/')
-            dispatch(getAllPosts(newData.data))
+            // dispatch(getAllPosts(newData.data))
             // dispatch(setShowModalEdit(false))
             // dispatch(setShowModalAlert(true))
             // dispatch(setAlertContent({

@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { api } from '../actions/api';
 import { useSelector, useDispatch } from 'react-redux'
 
-import { logoutUser, setShowModalAlert, setShowModalDelete, setShowModalEdit } from '../redux/UserSlice.js'
-import { getAllPosts, setLimitPost, countTotalPost } from '../redux/PostsSlice.js'
+// import { logoutUser, setShowModalAlert, setShowModalDelete, setShowModalEdit } from '../redux/UserSlice.js'
+// import { getAllPosts, setLimitPost, countTotalPost } from '../redux/PostsSlice.js'
 import { IconButton, Modal, CircularProgress, Alert, Grow, LinearProgress, Button } from '@mui/material';
 import NewPostComp from '../components/newPostComp';
 import PostComp from '../components/PostComp';
@@ -32,8 +32,8 @@ export default function Home() {
     async function fetchData() {
         setLoadingListPosts(true)
         const response = await api.get(`/?limit=${limitPost}`)
-        dispatch(getAllPosts(response.data))
-        dispatch(countTotalPost(response.data.count))
+        // dispatch(getAllPosts(response.data))
+        // dispatch(countTotalPost(response.data.count))
         setLoadingListPosts(false)
     }
 
@@ -42,16 +42,16 @@ export default function Home() {
         const newLimit = limitPost + 10;
         const response = await api.get(`/?limit=${newLimit}`)
         setTimeout(() => {
-            dispatch(getAllPosts(response.data))
-            dispatch(setLimitPost(newLimit))
+            // dispatch(getAllPosts(response.data))
+            // dispatch(setLimitPost(newLimit))
             setLoadingPaginationPosts(false)
         }, 1000);
     }
 
 
     function handleGetIDModal(dataSelected, type) {
-        { type === 'edit' && dispatch(setShowModalEdit(true)) }
-        { type === 'delete' && dispatch(setShowModalDelete(true)) }
+        // { type === 'edit' && dispatch(setShowModalEdit(true)) }
+        // { type === 'delete' && dispatch(setShowModalDelete(true)) }
         setIDPostSelected(dataSelected);
     }
 
