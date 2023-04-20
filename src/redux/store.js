@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import LogginUser from './UserSlice'
-import PostSlice from './PostsSlice'
+import postSlice from './postsSlice'
 
 export default configureStore({
   reducer: {
     user: LogginUser,
-    post: PostSlice,
+    post: postSlice,
   }
 })

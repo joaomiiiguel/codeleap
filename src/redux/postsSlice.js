@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const PostsSlice = createSlice({
+export const postsSlice = createSlice({
     name: 'posts',
     initialState: {
         data: [],
@@ -20,8 +20,8 @@ export const PostsSlice = createSlice({
         },
     }
 })
-export const { getAllPosts, setLimitPost, countTotalPost } = PostsSlice.actions;
+export const { getAllPosts, setLimitPost, countTotalPost } = postsSlice.actions;
 
 export const selectUser = state => state.posts
 
-export default PostsSlice.reducer
+export default postsSlice.reducer
