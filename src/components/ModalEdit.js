@@ -59,7 +59,7 @@ export default function ModalEdit({ dataPostSelected }) {
             </div>
             <div className='flex flex-row w-full space-x-6'>
                 <Button variant='outlined' className='font-semibold py-2 px-6 text-black rounded-md border' fullWidth onClick={() => dispatch(setShowModalEdit(false))}>Cancel</Button>
-                <Button variant='contained' className='font-semibold py-2 px-6 bg-green rounded-md border' fullWidth
+                <Button variant='contained' color="success" className='font-semibold py-2 px-6 bg-green rounded-md border' fullWidth
                     onClick={() => updatePost(newValuePost, dataPostSelected?.id)}
                     disabled={dataPostSelected.title === newValuePost.title || dataPostSelected.content === newValuePost.content ? true : false}
                 >Save</Button>

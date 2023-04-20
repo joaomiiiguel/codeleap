@@ -33,7 +33,7 @@ export default function ModalDelete({ idSelected }) {
 
             <div className='flex flex-row w-full md:w-full space-x-6'>
                 <Button variant='outlined' className='font-semibold py-2 px-6 text-black rounded-md border' fullWidth onClick={() => dispatch(setShowModalDelete(false))}>Cancel</Button>
-                <Button variant='contained' className='font-semibold py-2 px-6 bg-red rounded-md border' fullWidth onClick={() => handleDeletePost(idSelected)}>delete</Button>
+                <Button variant='contained' color="error" className='font-semibold py-2 px-6 bg-red rounded-md border' fullWidth onClick={() => handleDeletePost(idSelected)}>delete</Button>
             </div>
         </Box>
     )
