@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
-import { api } from '@/actions/api';
+import { api } from '../actions/api';
 import { useSelector, useDispatch } from 'react-redux'
 
 import { logoutUser, setShowModalAlert, setShowModalDelete, setShowModalEdit } from '../redux/UserSlice'
 import { getAllPosts, setLimitPost, countTotalPost } from '../redux/PostsSlice'
 import { IconButton, Modal, CircularProgress, Alert, Grow, LinearProgress, Button } from '@mui/material';
-import NewPostComp from '@/components/newPostComp';
-import PostComp from '@/components/PostComp';
-import ModalEdit from '@/components/ModalEdit';
-import ModalDelete from '@/components/ModalDelete';
+import NewPostComp from '../components/newPostComp';
+import PostComp from '../components/PostComp';
+import ModalEdit from '../components/ModalEdit';
+import ModalDelete from '../components/ModalDelete';
 
 import LogoutIcon from '@mui/icons-material/Logout';
 import CloseIcon from '@mui/icons-material/Close';
