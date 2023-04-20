@@ -5,21 +5,27 @@ import { useDispatch } from 'react-redux';
 import { getAllPosts } from '../redux/PostsSlice'
 import { setAlertContent, setShowModalAlert, setShowModalEdit } from '../redux/UserSlice';
 
-export default function ModalEdit({ dataPostSelected }) {
+export async function getStaticProps(){
+    const newData = await api.get('/')
+    console.log('asdas', newData);
+    return newData
+}
+
+export default function ModalEdit({ dataPostSelected, newData }) {
     const [newValuePost, setNewValuePost] = useState({
         title: dataPostSelected?.title,
         content: dataPostSelected?.content
     })
     const dispatch = useDispatch()
 
-
+    console.log(newData);
+    
     async function updatePost(dataNewPost, idPost) {
         try {
             const response = await api.patch(`${idPost}/`, {
                 "title": dataNewPost.title,
                 "content": dataNewPost.content
             });
-            const newData = await api.get('/')
             dispatch(getAllPosts(newData.data))
             dispatch(setShowModalEdit(false))
             dispatch(setShowModalAlert(true))
@@ -34,7 +40,7 @@ export default function ModalEdit({ dataPostSelected }) {
     }
 
     return (
-        <Box className='flex flex-col bg-white w-5/6 py-8 px-10 rounded-2xl space-y-8 items-center mx-[5%] md:w-5/6 lg:w-[25%] shadow-lg justify-center' >
+        <Box className='flex flex-col bg-white w-5/6 py-8 px-10 rounded-2xl space-y-8 items-center md:w-5/6 lg:w-3/6 shadow-lg justify-center' >
             <p className='font-semibold text-2xl'>Edit item</p>
             <div className='w-full'>
                 <p className='mb-2'>Title</p>
