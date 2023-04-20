@@ -27,7 +27,7 @@ export default function ModalDelete({ idSelected }) {
     }
     
     return (
-        <Box className='flex flex-col bg-white py-8 px-10 rounded-2xl space-y-8 items-center mx-[5%] md:w-fit lg:w-2/6 shadow-lg justify-center' >
+        <Box className='flex flex-col bg-white py-8 px-10 rounded-2xl space-y-8 items-center mx-[5%] md:w-fit lg:w-[25%] shadow-lg justify-center' >
             <p className='text-xl font-semibold py-4'>
                 Are you sure you want to delete this item?
             </p>
