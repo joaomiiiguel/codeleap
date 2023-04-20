@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Inter } from 'next/font/google'
-import { logginUser } from '../redux/UserSlice'
+import { logginUser } from '../redux/userSlice'
 
 import LoginUserComp from '../components/LoginUserComp';
 import HomeComp from './Home';

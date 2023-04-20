@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react'
 import { Box, Button, CircularProgress } from '@mui/material';
-import { setShowModalAlert, setAlertContent } from '../redux/UserSlice.js';
+import { setShowModalAlert, setAlertContent } from '../redux/userSlice';
 // import { getAllPosts } from '../redux/PostsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { api } from '../actions/api';

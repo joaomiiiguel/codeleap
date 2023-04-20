@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const LogginUser = createSlice({
+export const userSlice = createSlice({
     name: 'user',
     initialState: {
         name: null,
@@ -36,8 +36,8 @@ export const LogginUser = createSlice({
     }
 })
 
-export const { logginUser, logoutUser, setShowModalDelete, setShowModalEdit, setShowModalAlert, setAlertContent } = LogginUser.actions
+export const { logginUser, logoutUser, setShowModalDelete, setShowModalEdit, setShowModalAlert, setAlertContent } = userSlice.actions
 
 export const selectUser = state => state.user
 
-export default LogginUser.reducer
+export default userSlice.reducer
