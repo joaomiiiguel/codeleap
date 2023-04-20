@@ -12,8 +12,8 @@ export default function ModalDelete({ idSelected }) {
     async function handleDeletePost(idPost) {
         api.delete(`/${idPost}/`)
         .then(async () => {
-            const newData = await api.get('/')
-            dispatch(getAllPosts(newData.data))
+            // const newData = await api.get('/')
+            // dispatch(getAllPosts(newData.data))
             dispatch(setShowModalDelete(false))
             dispatch(setShowModalAlert(true))
             dispatch(setAlertContent({
